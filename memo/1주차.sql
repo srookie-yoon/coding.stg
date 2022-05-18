@@ -262,3 +262,9 @@ part 1. 리액트 기초
           (const로 선언하면 변수형태의 재 할당을 막을 수 있다.)
         - 클로저 참조문서: https://poiemaweb.com/js-closure#:~:text=클로저에 의해 참조되는, 있는 함수라는 뜻이다.
 
+
+GIT 정리
+ repository 경로 : https://github.com/srookie-yoon/coding.stg
+ VSCode에서 깃 사용하기
+    1. VScode에서 F1을 눌러 Git Clone 기입 후 enter
+    ㄴ
