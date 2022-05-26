@@ -1,3 +1,5 @@
+프로젝트 : rockpaper
+
 1)  내 로컬 파일 경로 : C:\yoonj\coding.stg\noonaProject\
 
 2) cmd실행

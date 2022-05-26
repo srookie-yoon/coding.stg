@@ -1,3 +1,5 @@
+프로젝트 : week1
+
 part 0. 자주쓰이는 자바스크립트 문법 정리
 
  --1) object shorthand assignment
