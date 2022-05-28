@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap';
 
-const WeatherButton = ({cities,setCity,getCurrentLocation}) => {
+const WeatherButton = ({cities,selectedCity,handleCityChange}) => {
     console.log("cities?",cities);
 
     return (
         <div>
-        <Button variant="warning" onClick={()=>getCurrentLocation()}>Current Location</Button>
+        
+        <Button variant={`${selectedCity == null ? "outline-warning" : "warning"}`} 
+                onClick={() => handleCityChange("current")}>Current Location</Button>
 
         {cities.map((item, index)=>(
-            <Button variant="warning" key={index} onClick={()=>setCity(item)}>
+            <Button variant={selectedCity == item ? "outline-warning" : "warning"} 
+                    key={index} 
+                    onClick={()=>handleCityChange(item)}>
                 {item}
             </Button>
             ))}

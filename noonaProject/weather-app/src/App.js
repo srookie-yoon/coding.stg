@@ -13,9 +13,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 //6. 데이터를 들고오는 동안 로딩 스피너가 돈다.
 function App() {
   const [weather, setWeather] = useState(null);
-  const [city,setCity] = useState('');
+  const [city,setCity] = useState(null);
   const [loading,setLoading] = useState(false);
+
   const cities=['paris','new york','tokyo','seoul'];
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  //const API_KEY = '0a62c3faa88c6e88a00bbc7267200f82';
+
+
   const getCurrentLocation=()=>{
     console.log("getCurrentLocation");
     navigator.geolocation.getCurrentPosition((position)=>{
@@ -27,34 +32,49 @@ function App() {
   }
   
   const getWeatherByCity=async()=>{
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0a62c3faa88c6e88a00bbc7267200f82&units=metric`
+    try{
       setLoading(true);
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       let res = await fetch(url);
       let data = await res.json();
       console.log("Data",data);
       setWeather(data);
-      setLoading(false);
+    }catch(err){
+      console.log("error : ",err);
+    }
+    setLoading(false);
   }
   
   const getWeatherByCurrentLocation = async(lat,lon) =>{
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0a62c3faa88c6e88a00bbc7267200f82&units=metric`
-    setLoading(true);
-    let response = await fetch(url)
-    let data = await response.json();
-    console.log("data",data);
-    //await을 쓰려면 함수는 async여야 함
-    setWeather(data);
+    try{
+      setLoading(true);
+      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      let response = await fetch(url)
+      let data = await response.json();
+      console.log("data",data);
+      //await을 쓰려면 함수는 async여야 함
+      setWeather(data);
+    }catch(err){
+      console.log("error : ",err);
+    }
     setLoading(false);
   }
 
   useEffect(()=>{
-    if(city==""){
+    if(city == null){
       getCurrentLocation();
     }else{
       getWeatherByCity();
     }
   },[city]);
 
+  const handleCityChange = (city) => {
+    if (city === "current") {
+      setCity(null);
+    } else {
+      setCity(city);
+    }
+  };
 
   return (
     <div>
@@ -64,8 +84,10 @@ function App() {
           </div>
         ) : (
           <div className="container">
-            <WeatherBox weather={weather}/>
-            <WeatherButton cities={cities} setCity={setCity} getCurrentLocation={getCurrentLocation}/>
+            <WeatherBox     weather={weather}/>
+            <WeatherButton  cities={cities} 
+                            handleCityChange={handleCityChange}
+                            selectedCity={city}/>
           </div>
         )
       }
