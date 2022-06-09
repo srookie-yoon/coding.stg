@@ -23,7 +23,8 @@ const choice = {
     name:"Paper",
     img:"https://m.media-amazon.com/images/I/61OorFhm6SL._AC_SX466_.jpg"
   }
-}
+};
+
 function App() {
   const [userSelect,setUserSelect] = useState(null);
   const [computerSelect,setComputerSelect] = useState(null);
