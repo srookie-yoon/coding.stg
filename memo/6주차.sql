@@ -11,6 +11,9 @@ https://noona-hnm.netlify.app/
 1. react route 사이트에서 도큐먼트보고 가져옴
 2. fontAwsome ( fontAwsome react )
 
+   부트스트랩
+    - https://react-bootstrap.netlify.app/components/dropdowns/
+
 3. json-server
     - https://www.npmjs.com/package/json-server
     - json-server 시작 명령어
@@ -52,4 +55,3 @@ https://noona-hnm.netlify.app/
 
     모든 코드 지우고 처음부터 스스로 만들어보기
     반드시 이 마지막 과제 까지 하고 다음 레슨으로 넘어가시기 바랍니다.
-
