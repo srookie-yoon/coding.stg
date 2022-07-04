@@ -1,12 +1,12 @@
 import React, { useEffect ,useState } from 'react'
 import {useParams} from "react-router-dom"
-import { Col, Row, Container ,Dropdown } from "react-bootstrap";
+import { Col, Row, Container ,Dropdown ,Button } from "react-bootstrap";
 
 const ProductDetail = () => {
   let {id} = useParams();
   const[product,setProduct]=useState(null)
   const getProductDetail= async ()=>{
-    let url = `http://localhost:3004/products/${id}`;
+    let url = `https://my-json-server.typicode.com/srookie-yoon/myJsonSever/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
@@ -16,24 +16,32 @@ const ProductDetail = () => {
     getProductDetail();
   },[])
   return (
-    <Container>
+    <Container className="product-detail-card">
       <Row>
         <Col className="product-img">
           <img src={product?.img}/>
         </Col>
         <Col>
-          <div>{product?.title}</div>
-          <div>{product?.price}</div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Dropdown Button
+          <div className="product-info">{product?.title}</div>
+          <div className="product-info">{product?.price}</div>
+          <div className="choice">
+            {product?.choice === true? "Conscious choice" : ""}
+          </div>
+          <Dropdown className="drop-down">
+            <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+              사이즈 선택
             </Dropdown.Toggle>
+
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              {product?.size.length > 0 &&
+                product.size.map((item) => (
+                  <Dropdown.Item href="">{item}</Dropdown.Item>
+                ))}
             </Dropdown.Menu>
           </Dropdown>
+          <Button variant="dark" className="add-button">
+            추가
+          </Button>
 
 
 
