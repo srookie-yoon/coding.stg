@@ -86,3 +86,23 @@ https://files.cdn.thinkific.com/file_uploads/523761/images/e99/0ca/c95/164950082
 https://hackmd.io/@oW_dDxdsRoSpl0M64Tfg2g/BkP5TACmc
 
 
+리덕스 툴킷
+최신 리덕스 사용하기
+기존 redux를 redux-toolkit으로 만들기
+리덕스 툴킷 웹사이트
+- https://redux-toolkit.js.org/
+
+-> get start
+# NPM
+npm install @reduxjs/toolkit
+
+
+기존의 리덕스를 제거해줘도 됨
+npm uninstall redux
+
+# 1 .
+reducer.js의 액션명 switch case나 if로 처리하는 부분은
+createSlice 로 변경되었다.
+
+
+
