@@ -1,9 +1,8 @@
-import {useEffect, useState} from "react";
+
 import './App.css';
 import { Routes, Route  } from "react-router-dom";
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
-import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRoute from "./route/PrivateRoute";
@@ -21,17 +20,13 @@ import PrivateRoute from "./route/PrivateRoute";
 */
 
 function App() {
-  const[authenticate,setAuthenticate]=useState(false)//true면 로그인이 됨 , false면 안됨
-  useEffect(()=>{
-    console.log("AAAA",authenticate);
-  },[authenticate]);
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<ProductAll/>}/>
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>}/>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/product/:id" element={<PrivateRoute/>}/>
       </Routes>
     </div>
   );

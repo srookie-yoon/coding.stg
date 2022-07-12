@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Container , Row , Col} from 'react-bootstrap';
 import ProductCard from '../component/ProductCard';
 import {useSearchParams} from "react-router-dom";
@@ -8,7 +8,6 @@ import { useDispatch , useSelector} from 'react-redux';
 const ProductAll = () => {
     const productList = useSelector((state) => state.product.productList);
     const [query, setQuery] = useSearchParams();
-    let [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const getProducts = ()=>{

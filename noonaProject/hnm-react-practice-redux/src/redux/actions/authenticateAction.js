@@ -5,6 +5,12 @@ function login(id,password){
     };
 
 }
+function logout(){
+    return (dispatch,getState) =>{
+        console.log("logout success action");
+        dispatch({type:"LOGOUT_SUCCESS"});
+    };
 
+}
 
-export const authenticateAction = {login};
+export const authenticateAction = {login,logout};
