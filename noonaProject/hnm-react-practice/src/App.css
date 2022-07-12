@@ -137,6 +137,7 @@ body{
   width: 100%;
 }
 
+/* 카드에 마우스를 올려두면 카드가 커지는 hover 이벤트를 만들어 주세요. */
 .card:hover{
   transform: scale(1.1);
   z-index: 1;
